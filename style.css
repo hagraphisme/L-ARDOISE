@@ -1,0 +1,787 @@
+/* ==========================================================================
+   L'ARDOISE — STYLES OFFICIELS (Mobile-First Responsive)
+   Palette : Fond Ardoise #122231 | Or Champagne #cab57d / #d8c491 | Blanc #ffffff
+   Typographie : Poppins (local) — ExtraLight (200), Regular (400), Bold (700)
+   ========================================================================== */
+
+/* 1. POLICES LOCALES POPPINS */
+@font-face {
+  font-family: 'Poppins';
+  src: url('fonts/Poppins-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('fonts/Poppins-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('fonts/Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('fonts/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('fonts/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 2. VARIABLES & RESET (Zéro arrondi, Zéro ombre portée) */
+:root {
+  --bg-color: #122231;
+  --bg-input: #122231;
+  --gold-primary: #cab57d;
+  --gold-light: #d8c491;
+  --gold-muted: #a69363;
+  --text-main: #ffffff;
+  --text-sub: rgba(255, 255, 255, 0.85);
+  --border-gold: #cab57d;
+  --border-gold-soft: rgba(202, 181, 125, 0.45);
+  --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --max-width: 440px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-family);
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+/* Conteneur d'application centré mobile */
+.app-container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 24px 18px 40px;
+}
+
+/* 3. EN-TÊTE & LOGO */
+.ardoise-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.logo-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.ardoise-logo-svg {
+  width: 250px;
+  max-width: 82vw;
+  height: auto;
+  display: block;
+}
+
+/* 4. NAVIGATION PAR BOUTONS (CARTE / RÉSERVATION / INFOS) — ANGLES DROITS */
+.nav-pills-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 34px;
+  width: 100%;
+}
+
+.pill-btn {
+  flex: 1;
+  max-width: 115px;
+  height: 38px;
+  border-radius: 0; /* Angles droits nets */
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  text-decoration: none;
+  background: transparent;
+  color: var(--gold-light);
+  border: 1px solid var(--border-gold);
+  box-shadow: none; /* Zéro ombre portée */
+}
+
+/* État actif : bouton plein doré permanent */
+.pill-btn.active-filled {
+  background: var(--gold-primary);
+  color: #122231;
+  font-weight: 700;
+  border: 1px solid var(--gold-primary);
+  box-shadow: none;
+}
+
+/* État inactif / contour */
+.pill-btn.outlined {
+  background: transparent;
+  color: var(--gold-light);
+  border: 1px solid var(--border-gold);
+  box-shadow: none;
+}
+
+.pill-btn.outlined:hover {
+  background: rgba(202, 181, 125, 0.1);
+}
+
+/* 5. GESTION DES VUES SPA */
+.page-view {
+  display: none;
+  width: 100%;
+  flex: 1;
+}
+
+.page-view.active {
+  display: block;
+}
+
+/* 6. CADRES DE CATÉGORIES (VUE CARTE) — ANGLES DROITS */
+.menu-sections-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 100%;
+}
+
+.menu-category-card {
+  position: relative;
+  border: 1px solid var(--border-gold);
+  border-radius: 0; /* Angles droits */
+  padding: 26px 16px 14px;
+  background: var(--bg-color);
+  box-shadow: none; /* Zéro ombre */
+}
+
+/* Titre de section centré interrompant la bordure haute */
+.category-card-header {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-color);
+  padding: 0 16px;
+  white-space: nowrap;
+}
+
+.category-card-title {
+  font-family: var(--font-family);
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  color: var(--gold-light);
+  margin: 0;
+  line-height: 1;
+}
+
+/* Liste des plats */
+.dishes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* LIGNE DU PLAT CLIQUABLE */
+.dish-row-item {
+  position: relative;
+  cursor: pointer;
+  padding: 6px 4px;
+  border-radius: 0;
+  transition: background-color 0.15s ease;
+  user-select: none;
+}
+
+.dish-row-item:hover {
+  background: rgba(202, 181, 125, 0.08);
+}
+
+/* Ligne supérieure : Titre + indicateur + pointillés + prix */
+.dish-main-line {
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  position: relative;
+}
+
+.dish-title-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.dish-name {
+  font-size: 15.5px;
+  font-weight: 300;
+  color: #ffffff;
+  letter-spacing: 0.2px;
+}
+
+/* Indicateur subtil de clic (icône i dorée) */
+.dish-click-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-muted);
+  color: var(--gold-light);
+  font-size: 10px;
+  font-weight: 600;
+  font-style: italic;
+  font-family: serif;
+  opacity: 0.75;
+}
+
+.dish-row-item:hover .dish-click-badge {
+  opacity: 1;
+  border-color: var(--gold-light);
+  background: rgba(202, 181, 125, 0.2);
+}
+
+/* Ligne de pointillés de conduite classique */
+.dish-leader-dots {
+  flex: 1;
+  margin: 0 8px;
+  border-bottom: 1.5px dotted rgba(202, 181, 125, 0.55);
+  transform: translateY(-4px);
+  min-width: 16px;
+}
+
+/* Prix en or */
+.dish-price {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--gold-light);
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Ingrédients / description : EXTRA-LIGHT & BLANC PUR */
+.dish-description {
+  font-size: 12.5px;
+  font-weight: 200; /* Extra-light */
+  color: #ffffff;    /* Blanc pur */
+  opacity: 0.9;
+  margin-top: 2px;
+  padding-left: 1px;
+  letter-spacing: 0.2px;
+}
+
+/* 7. VUE RÉSERVATION (#view-reservation-form) — CALQUÉE SUR LA MAQUETTE */
+.reservation-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.res-field {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-gold);
+  border-radius: 0; /* Angles droits */
+  color: #ffffff;
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 200; /* Extra-light */
+  box-shadow: none;
+}
+
+.res-field::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 200;
+}
+
+.res-field:focus {
+  outline: none;
+  border-color: #e2cc9d;
+}
+
+/* Ligne "Couverts" avec sélecteur interactif - 2 + */
+.res-couverts-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 11px 14px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-gold);
+  border-radius: 0;
+}
+
+.couverts-label {
+  font-size: 14px;
+  font-weight: 200; /* Extra-light */
+  color: #ffffff;
+}
+
+.couverts-stepper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stepper-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease, transform 0.1s ease;
+}
+
+.stepper-btn:hover {
+  color: var(--gold-light);
+}
+
+.stepper-btn:active {
+  transform: scale(0.9);
+}
+
+.couverts-value {
+  font-size: 15px;
+  font-weight: 300;
+  color: #ffffff;
+  min-width: 18px;
+  text-align: center;
+}
+
+/* Zone de texte "Note..." */
+.res-textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+/* Bouton plein "Confirmer la réservation" */
+.btn-confirm-res {
+  width: 100%;
+  padding: 13px;
+  background: var(--gold-primary);
+  color: #122231;
+  border: 1px solid var(--gold-primary);
+  border-radius: 0; /* Angles droits */
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-confirm-res:hover {
+  background: var(--gold-light);
+}
+
+/* 8. VUE INFORMATIONS (#view-infos) — CALQUÉE SUR LA MAQUETTE */
+.infos-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 4px;
+}
+
+.infos-header-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.infos-separator-line {
+  width: 100%;
+  height: 1px;
+  background: rgba(202, 181, 125, 0.4);
+  margin-bottom: 20px;
+}
+
+.info-block {
+  margin-bottom: 22px;
+}
+
+.info-block-title {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--gold-light);
+  margin-bottom: 5px;
+}
+
+.info-block-text {
+  font-size: 13.5px;
+  font-weight: 200; /* Extra-light */
+  color: #ffffff;    /* Blanc pur */
+  line-height: 1.55;
+}
+
+.info-phone-link {
+  color: #ffffff;
+  font-weight: 200;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.info-phone-link:hover {
+  color: var(--gold-light);
+}
+
+/* Carte interactive Maps centrée & épurée (sans bandeau blanc Google) */
+.infos-map-wrapper {
+  margin: 14px auto 6px;
+  width: 100%;
+  max-width: 320px;
+  height: 180px;
+  border-radius: 12px;
+  border: 1px solid var(--border-gold);
+  position: relative;
+  overflow: hidden; /* Masque le bandeau supérieur blanc de Google */
+  display: block;
+}
+
+.infos-map-iframe {
+  width: 100%;
+  height: 255px;
+  margin-top: -65px; /* Décale pour rogner la boîte blanche Google */
+  border: none;
+  filter: invert(90%) hue-rotate(180deg) contrast(110%);
+  display: block;
+}
+
+/* Badge itinéraire discret et élégant aux couleurs de L'Ardoise */
+.infos-map-badge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(18, 34, 49, 0.92);
+  border: 1px solid var(--border-gold);
+  color: var(--gold-light);
+  padding: 4px 10px;
+  border-radius: 0;
+  font-family: var(--font-family);
+  font-size: 11.5px;
+  font-weight: 300;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  z-index: 5;
+}
+
+.infos-map-badge:hover {
+  background: var(--gold-primary);
+  color: #122231;
+}
+
+/* 9. VUE CONFIRMATION DE RÉSERVATION (#view-reservation-confirm) */
+.confirm-card {
+  border: 1px solid var(--border-gold);
+  border-radius: 0;
+  padding: 36px 20px;
+  text-align: center;
+  background: var(--bg-color);
+  box-shadow: none;
+}
+
+.confirm-icon {
+  width: 52px;
+  height: 52px;
+  border: 1.5px solid var(--gold-light);
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin: 0 auto 18px;
+  border-radius: 0;
+}
+
+.confirm-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--gold-light);
+  margin-bottom: 14px;
+}
+
+.confirm-text {
+  font-size: 14px;
+  font-weight: 200;
+  color: #ffffff;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.confirm-phone-box {
+  margin: 20px 0;
+  padding: 12px;
+  border: 1px solid var(--border-gold-soft);
+}
+
+.confirm-phone-link {
+  color: var(--gold-light);
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* 10. MODALE DÉTAIL DU PLAT (ICÔNE i) — SANS ENCADREMENTS ALLERGÈNES/NUTRITION */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 12, 17, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  background: #122231;
+  border: 1px solid var(--border-gold);
+  border-radius: 0; /* Angles droits */
+  width: 100%;
+  max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 0; /* Zéro entre-deux : l'image colle aux bords */
+  box-shadow: none; /* Zéro ombre */
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%; /* Bouton croix encerclé */
+  background: #122231; /* Fond sombre ardoise plein pour un contraste net sur toute photo */
+  border: 1.5px solid var(--gold-light);
+  color: var(--gold-light);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 20;
+}
+
+.modal-close-btn:hover {
+  background: var(--gold-light);
+  color: #122231;
+  transform: scale(1.08);
+}
+
+/* Image collée parfaitement aux bords supérieur, gauche et droit */
+.modal-image-wrapper {
+  width: 100%;
+  height: 220px;
+  border-radius: 0;
+  overflow: hidden;
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid var(--border-gold);
+  background: #0d161e;
+  position: relative;
+}
+
+.modal-dish-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Contenu sous l'image */
+.modal-content-body {
+  padding: 20px 18px 24px;
+}
+
+.modal-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-gold-soft);
+}
+
+.modal-dish-title {
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--gold-light);
+}
+
+.modal-dish-price {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--gold-light);
+}
+
+.modal-section {
+  margin-top: 14px;
+}
+
+.modal-section-title {
+  font-size: 12.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold-light);
+  margin-bottom: 4px;
+}
+
+/* Texte en blanc Extra-Light sans boîtes */
+.modal-text {
+  font-size: 13.5px;
+  font-weight: 200; /* Extra-light */
+  color: #ffffff;    /* Blanc pur */
+  line-height: 1.5;
+}
+
+/* Allergènes sans encadrement ni contour */
+.modal-allergens-clean {
+  font-size: 13.5px;
+  font-weight: 200;
+  color: #ffffff;
+  line-height: 1.5;
+}
+
+/* Valeurs nutritionnelles avec séparateurs verticaux fins */
+.modal-nutrition-clean {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding: 8px 0;
+}
+
+.nutri-item-clean {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+}
+
+.nutri-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--border-gold-soft);
+  opacity: 0.5;
+}
+
+.nutri-lbl-clean {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--gold-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.nutri-val-clean {
+  font-size: 13.5px;
+  font-weight: 200; /* Extra-light */
+  color: #ffffff;    /* Blanc pur */
+}
+
+/* 11. FOOTER (LOGO MIO STUDIO / TABLE AGRANDI) */
+.ardoise-footer {
+  margin-top: auto;
+  padding-top: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mio-footer-link {
+  display: inline-block;
+  opacity: 0.9;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.mio-footer-link:hover {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.mio-svg-logo {
+  height: 50px; /* Logo agrandi nettement */
+  width: auto;
+  display: block;
+}

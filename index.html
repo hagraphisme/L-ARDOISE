@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="description" content="Menu digital officiel L'Ardoise — Bistrot & Cuisine Traditionnelle à Paris. Consultez la carte, réservez votre table et découvrez les ingrédients de chaque plat.">
+  <title>L'Ardoise — Bistrot & Cuisine Traditionnelle</title>
+
+  <!-- Favicon officiel fourni par l'utilisateur -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Préchargement des polices Poppins pour un affichage instantané sans flash -->
+  <link rel="preload" href="fonts/Poppins-ExtraLight.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="fonts/Poppins-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="fonts/Poppins-Bold.ttf" as="font" type="font/ttf" crossorigin>
+
+  <!-- Feuille de style principale -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ======================================================================
+         EN-TÊTE : LOGO VECTORIEL OFFICIEL L'ARDOISE
+         ====================================================================== -->
+    <header class="ardoise-header">
+      <a href="#" class="logo-link" id="logo-home-link" aria-label="Retour à la carte">
+        <img src="assets/LOGO ARDOISE.svg" alt="L'Ardoise — Bistrot Traditionnel" class="ardoise-logo-svg">
+      </a>
+    </header>
+
+    <!-- ======================================================================
+         NAVIGATION PRINCIPALE (CARTE / RÉSERVATION / INFOS)
+         ====================================================================== -->
+    <nav class="nav-pills-row" aria-label="Navigation principale">
+      <button type="button" id="nav-btn-carte" class="pill-btn active-filled" data-target="view-menu">
+        Carte
+      </button>
+      <button type="button" id="nav-btn-reservation" class="pill-btn outlined" data-target="view-reservation-form">
+        Réservation
+      </button>
+      <button type="button" id="nav-btn-infos" class="pill-btn outlined" data-target="view-infos">
+        Infos
+      </button>
+    </nav>
+
+    <!-- ======================================================================
+         PAGE 1 : VUE DU MENU / CARTE (#view-menu)
+         ====================================================================== -->
+    <main id="view-menu" class="page-view active" role="main">
+      <div id="menu-sections-container" class="menu-sections-wrapper">
+        <!-- Rendu dynamique des sections Entrées, Plats, Desserts généré par app.js -->
+      </div>
+    </main>
+
+    <!-- ======================================================================
+         PAGE 2 : VUE FORMULAIRE DE RÉSERVATION (#view-reservation-form)
+         Calquée fidèlement sur la maquette de l'utilisateur
+         ====================================================================== -->
+    <section id="view-reservation-form" class="page-view" aria-label="Réservation d'une table">
+      <form id="reservation-form" class="reservation-container" novalidate>
+        
+        <!-- Nom et Prénom -->
+        <input type="text" id="res-name" class="res-field" placeholder="Nom et Prénom..." required>
+
+        <!-- Téléphone -->
+        <input type="tel" id="res-phone" class="res-field" placeholder="Téléphone..." required>
+
+        <!-- Couverts avec sélecteur interactif - 2 + -->
+        <div class="res-couverts-row">
+          <span class="couverts-label">Couverts</span>
+          <div class="couverts-stepper">
+            <button type="button" class="stepper-btn" id="stepper-minus" aria-label="Moins de couverts">−</button>
+            <span class="couverts-value" id="stepper-count">2</span>
+            <button type="button" class="stepper-btn" id="stepper-plus" aria-label="Plus de couverts">+</button>
+          </div>
+          <input type="hidden" id="res-guests" value="2">
+        </div>
+
+        <!-- Date -->
+        <input type="text" id="res-date" class="res-field" placeholder="Date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" required>
+
+        <!-- Heure -->
+        <input type="text" id="res-time" class="res-field" placeholder="Heure" onfocus="(this.type='time')" onblur="if(!this.value)this.type='text'" required>
+
+        <!-- Note... -->
+        <textarea id="res-notes" class="res-field res-textarea" placeholder="Note..."></textarea>
+
+        <!-- Bouton Confirmer la réservation -->
+        <button type="submit" class="btn-confirm-res">
+          Confirmer la réservation
+        </button>
+
+      </form>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 3 : VUE INFORMATIONS (#view-infos)
+         Calquée fidèlement sur la maquette de l'utilisateur
+         ====================================================================== -->
+    <section id="view-infos" class="page-view" aria-label="Informations sur l'établissement">
+      <div class="infos-container">
+        
+        <!-- Titre avec filet doré -->
+        <h1 class="infos-header-title">L’ARDOISE</h1>
+        <div class="infos-separator-line"></div>
+
+        <!-- Adresse -->
+        <div class="info-block">
+          <h2 class="info-block-title">Adresse</h2>
+          <p class="info-block-text">19 Rue de la Cavalerie, 75009 Paris</p>
+          <div class="infos-map-wrapper">
+            <iframe 
+              class="infos-map-iframe" 
+              src="https://maps.google.com/maps?q=19%20Rue%20de%20la%20Cavalerie,%2075009%20Paris&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              loading="lazy"
+              title="Plan d'accès Google Maps — 19 Rue de la Cavalerie, 75009 Paris"
+              allowfullscreen>
+            </iframe>
+            <a href="https://maps.google.com/?q=19+Rue+de+la+Cavalerie,+75009+Paris" target="_blank" rel="noopener noreferrer" class="infos-map-badge" aria-label="Ouvrir l'itinéraire Google Maps">
+              <span>Itinéraire ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Horaires d'ouverture -->
+        <div class="info-block">
+          <h2 class="info-block-title">Horaires d'ouverture</h2>
+          <p class="info-block-text">
+            Mardi au Dimanche : 12h00 – 14h30 & 19h00 – 23h00<br>
+            Fermé le lundi
+          </p>
+        </div>
+
+        <!-- Téléphone -->
+        <div class="info-block">
+          <h2 class="info-block-title">Téléphone</h2>
+          <p class="info-block-text">
+            <a href="tel:0722368514" class="info-phone-link">07 22 36 85 14</a>
+          </p>
+        </div>
+
+        <!-- Notre concept -->
+        <div class="info-block">
+          <h2 class="info-block-title">Notre concept</h2>
+          <p class="info-block-text">
+            Une cuisine de bistrot élégante et généreuse, élaborée chaque jour à partir de produits frais de saison
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 4 : VUE CONFIRMATION DE RÉSERVATION (#view-reservation-confirm)
+         ====================================================================== -->
+    <section id="view-reservation-confirm" class="page-view" aria-label="Confirmation de la réservation">
+      <div class="confirm-card">
+        <div class="confirm-icon">✓</div>
+        <h2 class="confirm-title">Demande envoyée !</h2>
+        <p class="confirm-text">
+          Votre demande de réservation a bien été enregistrée et est en cours de traitement par notre équipe.
+        </p>
+        <p class="confirm-text">
+          Vous recevrez une confirmation sous 30 minutes.
+        </p>
+        <div class="confirm-phone-box">
+          <p class="confirm-text" style="margin-bottom: 4px; font-size: 13px;">Pour toute question urgente :</p>
+          <a href="tel:0722368514" class="confirm-phone-link">07 22 36 85 14</a>
+        </div>
+        <button type="button" class="btn-confirm-res" id="btn-back-to-menu" style="margin-top: 14px;">
+          Revenir à la carte
+        </button>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         MODALE DÉTAIL D'UN PLAT (PHOTO, INGRÉDIENTS, SANS CADRES ALLERGÈNES/NUTRITION)
+         ====================================================================== -->
+    <div id="modal-dish-detail" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <button type="button" class="modal-close-btn" id="btn-close-dish-modal" aria-label="Fermer la fenêtre">✕</button>
+        
+        <div class="modal-image-wrapper">
+          <img id="modal-dish-img" src="" alt="" class="modal-dish-img">
+        </div>
+
+        <div class="modal-content-body">
+          <div class="modal-header-row">
+            <h2 id="modal-dish-title" class="modal-dish-title">-</h2>
+            <span id="modal-dish-price" class="modal-dish-price">-</span>
+          </div>
+
+          <div class="modal-section">
+            <h3 class="modal-section-title">Description & Ingrédients</h3>
+            <p id="modal-dish-desc" class="modal-text">-</p>
+          </div>
+
+          <!-- Allergènes épurés sans encadrement -->
+          <div class="modal-section">
+            <h3 class="modal-section-title">Allergènes</h3>
+            <p id="modal-dish-allergens-clean" class="modal-allergens-clean">-</p>
+          </div>
+
+          <!-- Valeurs nutritionnelles épurées sans encadrements -->
+          <div class="modal-section">
+            <h3 class="modal-section-title">Valeurs nutritionnelles</h3>
+            <div class="modal-nutrition-clean">
+              <div class="nutri-item-clean">
+                <span class="nutri-lbl-clean">Calories</span>
+                <span id="modal-nutri-cal" class="nutri-val-clean">-</span>
+              </div>
+              <div class="nutri-divider" aria-hidden="true"></div>
+              <div class="nutri-item-clean">
+                <span class="nutri-lbl-clean">Protéines</span>
+                <span id="modal-nutri-prot" class="nutri-val-clean">-</span>
+              </div>
+              <div class="nutri-divider" aria-hidden="true"></div>
+              <div class="nutri-item-clean">
+                <span class="nutri-lbl-clean">Glucides</span>
+                <span id="modal-nutri-gluc" class="nutri-val-clean">-</span>
+              </div>
+              <div class="nutri-divider" aria-hidden="true"></div>
+              <div class="nutri-item-clean">
+                <span class="nutri-lbl-clean">Lipides</span>
+                <span id="modal-nutri-lip" class="nutri-val-clean">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         FOOTER AVEC LOGO MIO TABLE
+         ====================================================================== -->
+    <footer class="ardoise-footer">
+      <a href="https://miotable.com" class="mio-footer-link" target="_blank" rel="noopener noreferrer" aria-label="Créé avec MIO Table">
+        <img src="assets/mio_table.svg" alt="Créé par MIO Table" class="mio-svg-logo">
+      </a>
+    </footer>
+
+  </div>
+
+  <!-- SCRIPT APPLICATION -->
+  <script src="app.js"></script>
+</body>
+</html>

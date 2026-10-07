@@ -1,0 +1,166 @@
+{
+  "restaurant": {
+    "name": "L'Ardoise",
+    "tagline": "Bistrot & Cuisine Traditionnelle",
+    "address": "19 Rue de la Cavalerie, 75009 Paris",
+    "phone": "07 22 36 85 14",
+    "reservationPhone": "07 22 36 85 14",
+    "hours": "Du Mardi au Dimanche : 12h00 – 14h30 & 19h00 – 23h00\nFermé le lundi",
+    "concept": "Une cuisine de bistrot élégante et généreuse, élaborée à partir de produits frais de saison rigoureusement sélectionnés. Chaque plat est préparé avec passion dans le respect des traditions culinaires françaises."
+  },
+  "categories": [
+    {
+      "id": "entrees",
+      "name": "Entrées",
+      "items": [
+        {
+          "id": "soupe-oignon",
+          "name": "Soupe à l'oignon",
+          "price": "9 €",
+          "description": "Oignon, croutons, bouillons.",
+          "fullDescription": "Soupe à l'oignon gratinée selon la tradition, oignons fondants caramélisés, croûtons croustillants et bouillon mijoté.",
+          "image": "images/soupe_oignon.jpg",
+          "allergens": "Gluten, lactose, céleri",
+          "nutrition": {
+            "calories": "320 kcal",
+            "proteines": "12 g",
+            "glucides": "34 g",
+            "lipides": "14 g"
+          }
+        },
+        {
+          "id": "oeuf-mayonnaise",
+          "name": "Œuf mayonnaise",
+          "price": "10 €",
+          "description": "Oeuf, mayonnaise.",
+          "fullDescription": "Œufs fermiers plein air cuits à la perfection, mayonnaise onctueuse battue maison à la moutarde de Dijon.",
+          "image": "images/oeuf_mayonnaise.jpg",
+          "allergens": "Œufs, moutarde",
+          "nutrition": {
+            "calories": "385 kcal",
+            "proteines": "14 g",
+            "glucides": "3 g",
+            "lipides": "35 g"
+          }
+        },
+        {
+          "id": "tataki-boeuf",
+          "name": "Tataki de bœuf",
+          "price": "13 €",
+          "description": "Boeuf, sesame, sauce shirashi.",
+          "fullDescription": "Fines tranches de filet de bœuf juste saisies à la flamme, graines de sésame torréfiées et sauce chirashi parfumée.",
+          "image": "images/tataki_boeuf.jpg",
+          "allergens": "Sésame, soja",
+          "nutrition": {
+            "calories": "395 kcal",
+            "proteines": "34 g",
+            "glucides": "7 g",
+            "lipides": "25 g"
+          }
+        }
+      ]
+    },
+    {
+      "id": "plats",
+      "name": "Plats",
+      "items": [
+        {
+          "id": "bavette-aloyau",
+          "name": "Bavette d'aloyau",
+          "price": "32 €",
+          "description": "Bavette d'aloyaux, pommes de terres, légumes.",
+          "fullDescription": "Bavette d'aloyau poêlée au beurre maître d'hôtel, accompagnée de pommes de terre grenailles rôties et légumes du marché.",
+          "image": "images/bavette_aloyau.jpg",
+          "allergens": "Lactose",
+          "nutrition": {
+            "calories": "740 kcal",
+            "proteines": "54 g",
+            "glucides": "42 g",
+            "lipides": "38 g"
+          }
+        },
+        {
+          "id": "cabillaud-grill",
+          "name": "Cabillaud au grill",
+          "price": "29 €",
+          "description": "Risotto au safran, légumes.",
+          "fullDescription": "Dos de cabillaud frais nacré au grill, posé sur un risotto crémeux au safran et petits légumes croquants.",
+          "image": "images/cabillaud_grill.jpg",
+          "allergens": "Poisson, lactose, céleri",
+          "nutrition": {
+            "calories": "590 kcal",
+            "proteines": "46 g",
+            "glucides": "50 g",
+            "lipides": "21 g"
+          }
+        },
+        {
+          "id": "tagliatelle-saumon",
+          "name": "Tagliatelle au Saumon",
+          "price": "24 €",
+          "description": "Pates fraiche, creme, ail.",
+          "fullDescription": "Pâtes fraîches artisanales, généreux morceaux de saumon frais, crème fine d'Isigny liée à l'ail doux et ciboulette.",
+          "image": "images/tagliatelle_saumon.jpg",
+          "allergens": "Gluten, poisson, lactose",
+          "nutrition": {
+            "calories": "780 kcal",
+            "proteines": "39 g",
+            "glucides": "76 g",
+            "lipides": "36 g"
+          }
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "name": "Desserts",
+      "items": [
+        {
+          "id": "mi-cuit",
+          "name": "Mi-cuit",
+          "price": "7 €",
+          "description": "Mi-cuit au chocolat.",
+          "fullDescription": "Cœur coulant au chocolat noir intense pur beurre de cacao, servi tiède avec sa touche gourmande.",
+          "image": "images/mi_cuit.jpg",
+          "allergens": "Gluten, œufs, lactose",
+          "nutrition": {
+            "calories": "520 kcal",
+            "proteines": "8 g",
+            "glucides": "56 g",
+            "lipides": "29 g"
+          }
+        },
+        {
+          "id": "ile-flottante",
+          "name": "Île Flottante",
+          "price": "9 €",
+          "description": "Île flottante, creme anglaise.",
+          "fullDescription": "Blancs d'œufs délicatement pochés, crème anglaise maison parfumée à la gousse de vanille bourbon et amandes effilées.",
+          "image": "images/ile_flottante.jpg",
+          "allergens": "Œufs, lactose, fruits à coque",
+          "nutrition": {
+            "calories": "330 kcal",
+            "proteines": "9 g",
+            "glucides": "42 g",
+            "lipides": "13 g"
+          }
+        },
+        {
+          "id": "cafe-gourmand",
+          "name": "Café Gourmand",
+          "price": "11 €",
+          "description": "Mignardises assorties.",
+          "fullDescription": "Un café expresso italien serré accompagné d'un trio de mignardises sucrées du chef pâtissier.",
+          "image": "images/cafe_gourmand.jpg",
+          "allergens": "Gluten, œufs, lactose, fruits à coque",
+          "nutrition": {
+            "calories": "410 kcal",
+            "proteines": "6 g",
+            "glucides": "48 g",
+            "lipides": "20 g"
+          }
+        }
+      ]
+    }
+  ]
+}
