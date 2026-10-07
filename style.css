@@ -75,20 +75,37 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
+html {
+  min-height: 100%;
+  background-color: var(--bg-color);
+  overflow-x: hidden;
+}
+
+body {
   background-color: var(--bg-color);
   color: var(--text-main);
   font-family: var(--font-family);
   font-size: 15px;
   line-height: 1.5;
   min-height: 100vh;
+  min-height: 100dvh; /* Hauteur dynamique plein écran smartphone */
   width: 100%;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-body {
+/* CALQUE D'ARRIÈRE-PLAN PLEIN ÉCRAN ULTRA-FLUIDE COMPOSITÉ GPU (ZÉRO BLANC AU SCROLL) */
+.app-fixed-gradient-bg {
+  position: fixed;
+  top: -60px;
+  left: -60px;
+  right: -60px;
+  bottom: -60px;
   background-color: var(--bg-color);
+  z-index: -2;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 /* Conteneur d'application centré mobile */
@@ -108,7 +125,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 45px; /* Espacement harmonisé vers les boutons */
 }
 
 .logo-link {
@@ -129,7 +146,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 14px;
-  margin-bottom: 34px;
+  margin-bottom: 45px; /* Espacement harmonisé vers le menu */
   width: 100%;
 }
 
@@ -663,6 +680,7 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: opacity 0.2s ease;
 }
 
 /* Contenu sous l'image */

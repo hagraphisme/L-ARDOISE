@@ -179,6 +179,7 @@ let currentCouvertCount = 2;
 // Initialisation dès chargement du DOM
 document.addEventListener('DOMContentLoaded', async () => {
   await loadMenuData();
+  preloadDishImages(); // Préchargement immédiat en cache pour zéro latence
   renderMenu();
   setupNavigation();
   setupReservationForm();
@@ -210,6 +211,21 @@ async function loadMenuData() {
       });
     });
   }
+}
+
+/**
+ * Préchargement de toutes les images pour affichage instantané sans latence
+ */
+function preloadDishImages() {
+  if (!menuData.categories) return;
+  menuData.categories.forEach(category => {
+    category.items.forEach(dish => {
+      if (dish.image) {
+        const img = new Image();
+        img.src = dish.image;
+      }
+    });
+  });
 }
 
 /**
@@ -453,8 +469,13 @@ function openDishModal(dishId) {
   const lipEl = document.getElementById('modal-nutri-lip');
 
   if (imgEl) {
+    imgEl.style.opacity = '0';
+    imgEl.onload = () => { imgEl.style.opacity = '1'; };
     imgEl.src = dish.image;
     imgEl.alt = dish.name;
+    if (imgEl.complete) {
+      imgEl.style.opacity = '1';
+    }
   }
   if (titleEl) titleEl.textContent = dish.name;
   if (priceEl) priceEl.textContent = dish.price;
@@ -481,6 +502,10 @@ function openDishModal(dishId) {
 
 function closeDishModal() {
   const modal = document.getElementById('modal-dish-detail');
+  const imgEl = document.getElementById('modal-dish-img');
+  if (imgEl) {
+    imgEl.style.opacity = '0';
+  }
   if (modal) {
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
